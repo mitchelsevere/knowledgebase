@@ -1,6 +1,6 @@
 extends layout
 block content
     h1 #{title}
-    ul 
+    ul.list-group 
       each article in articles
-        li #{article.author} </br> #{article.title} </br> #{article.body} </br>
+        li.list-group-item #{article.author} </br> #{article.title} </br> #{article.body} </br>
