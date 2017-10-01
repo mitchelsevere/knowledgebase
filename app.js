@@ -9,6 +9,7 @@ const articlesController = require('./controllers/articles-controller');
 const app = express();
 const port = process.env.PORT || 3000;
 
+// mongoose setup
 mongoose.connect('mongodb://localhost/nodekb', {
   useMongoClient: true,
 });
@@ -22,6 +23,7 @@ db.on('error', err => {
   console.log(err);
 });
 
+// middleware
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
@@ -29,6 +31,8 @@ app.use(bodyParser.urlencoded({extended: false}));
 // set view engine
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
+// set public folder
+app.use(express.static(path.join(__dirname, 'public')));
 
 // start server
 app.listen(port, () => {
@@ -37,9 +41,9 @@ app.listen(port, () => {
 
 // get home route
 app.get('/', articlesController.index);
-
-const articleRoutes = require('./routes/routes');
-app.use('/', articleRoutes);
+//  article routes
+const articleRoutes = require('./routes/article-routes');
+app.use('/articles', articleRoutes);
 
 
 
