@@ -1,7 +1,7 @@
 extends layout
 block content
   h1 #{title}
-  form(method="post", action="articles/add")
+  form(method="post", action="/articles/add")
     div.form-group
       label Title:
         input.form-control(name="title", type="text")
