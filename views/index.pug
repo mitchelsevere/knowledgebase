@@ -3,4 +3,5 @@ block content
     h1 #{title}
     ul.list-group 
       each article in articles
-        li.list-group-item #{article.author} </br> #{article.title} </br> #{article.body} </br>
+        li.list-group-item
+          a(href=`/articles/${article.id}`)= article.title
