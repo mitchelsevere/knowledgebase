@@ -8,5 +8,6 @@ articleRouter.post('/add', articlesController.create);
 articleRouter.get('/:id', articlesController.show);
 articleRouter.get('/edit/:id', articlesController.edit);
 articleRouter.post('/edit/:id', articlesController.update);
+articleRouter.delete('/:id', articlesController.delete);
 
 module.exports = articleRouter;
