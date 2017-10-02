@@ -60,5 +60,13 @@ articleController.update = (req, res) => {
     err ? console.log(err) : res.redirect('/');
   });
 }
+// delete Article - action
+articleController.delete = (req, res) => {
+  let query = {_id:req.params.id}
+
+  Article.remove(query, (err) => {
+    err ? console.log(err) : res.send('Success');
+  });
+}
 
 module.exports = articleController;
